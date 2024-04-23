@@ -115,6 +115,7 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', { desc = 'Toggle floating terminal' })
 vim.keymap.set('n', '<C-s>', ':w!<CR>', { desc = 'Save current file' })
 
 -- [[ Basic Autocommands ]]
@@ -604,6 +605,7 @@ require('lazy').setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+<<<<<<< HEAD
       local lspconfig = require 'lspconfig'
 
       lspconfig.ts_ls.setup {}
@@ -622,6 +624,20 @@ require('lazy').setup({
       lspconfig.jsonls.setup {
         capabilities = capabilities,
       }
+=======
+      -- require('mason-lspconfig').setup {
+      --  handlers = {
+      --    function(server_name)
+      --      local server = servers[server_name] or {}
+      --      -- This handles overriding only values explicitly passed
+      --      -- by the server configuration above. Useful when disabling
+      --      -- certain features of an LSP (for example, turning off formatting for tsserver)
+      --      server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      --      require('lspconfig')[server_name].setup(server)
+      --    end,
+      --  },
+      --}
+>>>>>>> 67d5c44 (feat(config): Start setting up config)
     end,
   },
 
