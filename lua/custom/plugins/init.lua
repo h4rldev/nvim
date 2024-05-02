@@ -37,4 +37,11 @@ return {
     version = '^4', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  {
+    'IogaMaster/neocord',
+    event = 'VeryLazy',
+    config = function()
+      require('neocord').setup()
+    end,
+  },
 }
