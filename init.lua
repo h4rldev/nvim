@@ -115,7 +115,6 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', { desc = 'Toggle floating terminal' })
 vim.keymap.set('n', '<C-s>', ':w!<CR>', { desc = 'Save current file' })
 
 -- [[ Basic Autocommands ]]
@@ -244,7 +243,7 @@ require('lazy').setup({
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
+        { '<leader>r', group = '[R]ename & linenumbers' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
@@ -605,7 +604,6 @@ require('lazy').setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-<<<<<<< HEAD
       local lspconfig = require 'lspconfig'
 
       lspconfig.ts_ls.setup {}
@@ -624,7 +622,6 @@ require('lazy').setup({
       lspconfig.jsonls.setup {
         capabilities = capabilities,
       }
-=======
       -- require('mason-lspconfig').setup {
       --  handlers = {
       --    function(server_name)
@@ -637,7 +634,6 @@ require('lazy').setup({
       --    end,
       --  },
       --}
->>>>>>> 67d5c44 (feat(config): Start setting up config)
     end,
   },
 
@@ -911,6 +907,7 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
