@@ -60,6 +60,26 @@ return {
             action = ':Neotree dir=~/.config/nvim/',
           },
           {
+            icon = ' ',
+            icon_hl = 'Title',
+            desc = ' Lazy',
+            desc_hl = 'group',
+            key = 'l',
+            key_hl = 'group',
+            key_format = ' [%s]', -- `%s` will be substituted with value of `key`
+            action = ':Lazy',
+          },
+          {
+            icon = ' ',
+            icon_hl = 'Title',
+            desc = ' Mason',
+            desc_hl = 'group',
+            key = 'm',
+            key_hl = 'group',
+            key_format = ' [%s]', -- `%s` will be substituted with value of `key`
+            action = ':Mason',
+          },
+          {
             icon = ' ',
             icon_hl = 'Error',
             desc = ' Exit',
@@ -78,6 +98,7 @@ return {
         winbar = true,
       },
     }
+    vim.g.nvim_dashboard_ibl = false
   end,
   dependencies = { { 'nvim-tree/nvim-web-devicons' } },
 }
