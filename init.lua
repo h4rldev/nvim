@@ -532,8 +532,10 @@ require('lazy').setup({
 
       lspconfig.tsserver.setup {}
       lspconfig.clangd.setup {}
-      lspconfig.unocss.setup {}
       lspconfig.svelte.setup {}
+      lspconfig.unocss.setup {}
+      lspconfig.html.setup {}
+      lspconfig.htmx.setup {}
     end,
   },
 
