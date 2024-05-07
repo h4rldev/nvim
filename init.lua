@@ -25,7 +25,7 @@ vim.opt.mouse = 'a'
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
+--  Remove this option if you want your OS clipboard to remain indepenshow hodent.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 
@@ -532,6 +532,8 @@ require('lazy').setup({
 
       lspconfig.tsserver.setup {}
       lspconfig.clangd.setup {}
+      lspconfig.unocss.setup {}
+      lspconfig.svelte.setup {}
     end,
   },
 
