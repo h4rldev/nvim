@@ -4,15 +4,6 @@
 -- See the kickstart.nvim README for more information
 return {
   {
-    'folke/trouble.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-  },
-  {
     'romgrk/barbar.nvim',
     dependencies = {
       'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
