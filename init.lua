@@ -533,7 +533,9 @@ require('lazy').setup({
       lspconfig.tsserver.setup {}
       lspconfig.clangd.setup {}
       lspconfig.svelte.setup {}
-      lspconfig.unocss.setup {}
+      lspconfig.unocss.setup {
+        filetypes = { 'html', 'javascriptreact', 'rescript', 'typescriptreact', 'vue', 'svelte', 'scss', 'css' },
+      }
       lspconfig.html.setup {}
       lspconfig.htmx.setup {}
     end,
