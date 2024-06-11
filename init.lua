@@ -68,6 +68,18 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Use spaces for indentation
+vim.opt.expandtab = true
+
+-- Set the number of spaces for each indentation level
+vim.opt.shiftwidth = 2
+
+-- Set the number of spaces to use for each step of (auto)indent
+vim.opt.softtabstop = 2
+
+-- Set the number of spaces that a <Tab> counts for while editing
+vim.opt.tabstop = 2
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -527,6 +539,8 @@ require('lazy').setup({
       --    end,
       --  },
       --}
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       local lspconfig = require 'lspconfig'
 
@@ -538,6 +552,10 @@ require('lazy').setup({
       }
       lspconfig.html.setup {}
       lspconfig.htmx.setup {}
+      lspconfig.bashls.setup {}
+      lspconfig.jsonls.setup {
+        capabilities = capabilities,
+      }
     end,
   },
 
@@ -802,7 +820,6 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
-  
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
