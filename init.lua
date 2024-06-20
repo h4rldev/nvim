@@ -586,6 +586,16 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        rust = { 'rustfmt' },
+        python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+        html = { 'htmlbeautifier' },
+        json = { 'jsonfix' },
+        yaml = { 'yamlfix', 'yamlfmt' },
+        c = { 'clang-format' },
+        markdown = { 'cbfmt', 'mdformat' },
+        bash = { { 'beautysh', 'shfmt' } },
+        javascript = { { 'prettierd', 'prettier' } },
+
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
