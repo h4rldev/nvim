@@ -108,6 +108,9 @@ return {
     },
   },
   {
+    'mfussenegger/nvim-jdtls',
+  },
+  {
     'wakatime/vim-wakatime',
     lazy = false,
   },

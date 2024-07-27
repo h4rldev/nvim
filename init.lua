@@ -555,6 +555,10 @@ require('lazy').setup({
       lspconfig.unocss.setup {
         filetypes = { 'html', 'javascriptreact', 'rescript', 'typescriptreact', 'vue', 'svelte', 'scss', 'css' },
       }
+      lspconfig.jdtls.setup {
+        filetypes = { 'kotlin', 'java' },
+        workspace = { checkThirdParty = false },
+      }
       lspconfig.html.setup {}
       lspconfig.htmx.setup {}
       lspconfig.bashls.setup {}
