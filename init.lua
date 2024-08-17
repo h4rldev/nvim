@@ -600,10 +600,12 @@ require('lazy').setup({
         html = { 'htmlbeautifier' },
         json = { 'jsonfix' },
         yaml = { 'yamlfix', 'yamlfmt' },
-        c = { 'clang-format' },
+        c = { 'clang-format', 'uncrustify' },
+        cpp = { 'clang-format', 'uncrustify' },
         markdown = { 'cbfmt', 'mdformat' },
         bash = { { 'beautysh', 'shfmt' } },
         javascript = { { 'prettierd', 'prettier' } },
+        nix = { 'alejandra' },
 
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
