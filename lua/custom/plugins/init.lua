@@ -28,7 +28,7 @@ return {
     version = '^4', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
-  { "actionshrimp/direnv.nvim", opts = {} },
+  { 'actionshrimp/direnv.nvim', opts = {} },
   {
     'vhyrro/luarocks.nvim',
     priority = 1001, -- this plugin needs to run before anything else
@@ -42,5 +42,12 @@ return {
   {
     'wakatime/vim-wakatime',
     lazy = false,
+  },
+  {
+    'boganworld/crackboard.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('crackboard').setup {}
+    end,
   },
 }
