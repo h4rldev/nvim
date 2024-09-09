@@ -44,6 +44,12 @@ return {
     lazy = false,
   },
   {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
+  {
     'boganworld/crackboard.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
