@@ -545,8 +545,8 @@ require('lazy').setup({
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        -- But for many setups, the LSP (`ts_ls`) will work just fine
+        -- ts_ls = {},
         --
 
         lua_ls = {
@@ -580,7 +580,6 @@ require('lazy').setup({
       -- 'stylua', -- Used to format Lua code
       -- })
       -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
       -- require('mason-lspconfig').setup {
       --  handlers = {
       --    function(server_name)
@@ -602,7 +601,6 @@ require('lazy').setup({
       lspconfig.clangd.setup {}
       lspconfig.svelte.setup {}
       lspconfig.unocss.setup {
->>>>>>> f5c9195 (which-key v3 update (#1022))
         filetypes = { 'html', 'javascriptreact', 'rescript', 'typescriptreact', 'vue', 'svelte', 'scss', 'css' },
       }
       lspconfig.jdtls.setup {
