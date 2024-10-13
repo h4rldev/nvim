@@ -549,7 +549,7 @@ require('lazy').setup({
 
       local lspconfig = require 'lspconfig'
 
-      lspconfig.tsserver.setup {}
+      lspconfig.ts_ls.setup {}
       lspconfig.clangd.setup {}
       lspconfig.svelte.setup {}
       lspconfig.unocss.setup {
