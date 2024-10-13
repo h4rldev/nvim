@@ -53,7 +53,7 @@ return {
     'boganworld/crackboard.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      local file_path = '/home/h4rl/.config/nvim/token.txt'
+      local file_path = '/home/h4rl/.secrets/.wakatime'
       local f = io.open(file_path, 'r')
       if f ~= nil then
         local content = f:read '*a'
