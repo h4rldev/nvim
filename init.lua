@@ -295,6 +295,9 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          ['remote-sshfs'] = {
+            require('telescope').load_extension 'remote-sshfs',
+          },
         },
       }
 

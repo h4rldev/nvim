@@ -50,10 +50,15 @@ return {
     end,
   },
   {
+    'nosduco/remote-sshfs.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+    opts = {},
+  },
+  {
     'boganworld/crackboard.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      local file_path = '/home/h4rl/.secrets/.wakatime'
+      local file_path = '/home/h4rl/.secrets/.crackboard'
       local f = io.open(file_path, 'r')
       if f ~= nil then
         local content = f:read '*a'
