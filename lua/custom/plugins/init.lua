@@ -37,7 +37,12 @@ return {
     version = '^4', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
-  { 'actionshrimp/direnv.nvim', opts = {} },
+  { 'actionshrimp/direnv.nvim', opts = {
+    async = true,
+    on_direnv_finished = function()
+      vim.cmd 'LspStart'
+    end,
+  } },
   {
     'vyfor/cord.nvim',
     build = './build',

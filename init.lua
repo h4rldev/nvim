@@ -542,7 +542,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        -- clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -554,21 +554,6 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
-        lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -577,7 +562,7 @@ require('lazy').setup({
       --    :Mason
       --
       --  You can press `g?` for help in this menu.
-      require('mason').setup()
+      -- require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
@@ -604,20 +589,59 @@ require('lazy').setup({
 
       local lspconfig = require 'lspconfig'
 
-      lspconfig.ts_ls.setup {}
-      lspconfig.clangd.setup {}
-      lspconfig.svelte.setup {}
+      lspconfig.lua_ls.setup {
+        autostart = false,
+        capabilities = capabilities,
+      }
+
+      lspconfig.ts_ls.setup {
+        autostart = false,
+        capabilities = capabilities,
+      }
+      lspconfig.clangd.setup {
+        autostart = false,
+        cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+        capabilities = capabilities,
+      }
+      lspconfig.svelte.setup {
+        autostart = false,
+        capabilities = capabilities,
+      }
       lspconfig.unocss.setup {
-        filetypes = { 'html', 'javascriptreact', 'rescript', 'typescriptreact', 'vue', 'svelte', 'scss', 'css' },
+        autostart = false,
+        filetypes = { 'html', 'svelte', 'scss', 'css' },
+        capabilities = capabilities,
+      }
+      lspconfig.tailwindcss.setup {
+        autostart = false,
+        filetypes = { 'html', 'svelte', 'scss', 'css' },
+        capabilities = capabilities,
       }
       lspconfig.jdtls.setup {
+        autostart = false,
         filetypes = { 'kotlin', 'java' },
         workspace = { checkThirdParty = false },
+        capabilities = capabilities,
       }
-      lspconfig.html.setup {}
-      lspconfig.htmx.setup {}
-      lspconfig.bashls.setup {}
+      lspconfig.html.setup {
+        autostart = false,
+        capabilities = capabilities,
+      }
+      lspconfig.htmx.setup {
+        autostart = false,
+        capabilities = capabilities,
+      }
+      lspconfig.bashls.setup {
+        autostart = false,
+        capabilities = capabilities,
+      }
       lspconfig.jsonls.setup {
+        autostart = false,
+        capabilities = capabilities,
+      }
+      lspconfig.vuels.setup {
+        autostart = false,
+        cmd = { 'vue-language-server', '--stdio' },
         capabilities = capabilities,
       }
       -- require('mason-lspconfig').setup {
