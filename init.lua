@@ -541,20 +541,20 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
-      }
+      -- local servers = {
+      --   -- clangd = {},
+      --   -- gopls = {},
+      --   -- pyright = {},
+      --   -- rust_analyzer = {},
+      --   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+      --   --
+      --   -- Some languages (like typescript) have entire language plugins that can be useful:
+      --   --    https://github.com/pmizio/typescript-tools.nvim
+      --   --
+      --   -- But for many setups, the LSP (`ts_ls`) will work just fine
+      --   -- ts_ls = {},
+      --   --
+      -- }
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
@@ -584,7 +584,7 @@ require('lazy').setup({
       --    end,
       --  },
       --}
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
+
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       local lspconfig = require 'lspconfig'
@@ -627,10 +627,10 @@ require('lazy').setup({
         autostart = false,
         capabilities = capabilities,
       }
-      lspconfig.htmx.setup {
-        autostart = false,
-        capabilities = capabilities,
-      }
+      -- lspconfig.htmx.setup {
+      --   autostart = false,
+      --   capabilities = capabilities,
+      -- }
       lspconfig.bashls.setup {
         autostart = false,
         capabilities = capabilities,
@@ -691,6 +691,7 @@ require('lazy').setup({
           lsp_format = lsp_format_opt,
         }
       end,
+
       formatters_by_ft = {
         lua = { 'stylua' },
         rust = { 'rustfmt' },
@@ -700,7 +701,7 @@ require('lazy').setup({
         yaml = { 'yamlfix', 'yamlfmt' },
         c = { 'clang-format', 'uncrustify' },
         cpp = { 'clang-format', 'uncrustify' },
-        markdown = { 'cbfmt', 'mdformat' },
+        -- markdown = { 'cbfmt', 'mdformat' },
         bash = { { 'beautysh', 'shfmt' } },
         javascript = { { 'prettierd', 'prettier' } },
         nix = { 'alejandra' },
@@ -936,27 +937,7 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --  For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
-}, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-})
-
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()),
+  })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

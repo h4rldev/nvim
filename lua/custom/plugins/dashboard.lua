@@ -69,16 +69,16 @@ return {
             key_format = ' [%s]', -- `%s` will be substituted with value of `key`
             action = ':Lazy',
           },
-          {
-            icon = ' ',
-            icon_hl = 'Title',
-            desc = ' Mason',
-            desc_hl = 'group',
-            key = 'm',
-            key_hl = 'group',
-            key_format = ' [%s]', -- `%s` will be substituted with value of `key`
-            action = ':Mason',
-          },
+          -- {
+          --   icon = ' ',
+          --   icon_hl = 'Title',
+          --   desc = ' Mason',
+          --   desc_hl = 'group',
+          --   key = 'm',
+          --   key_hl = 'group',
+          --   key_format = ' [%s]', -- `%s` will be substituted with value of `key`
+          --   action = ':Mason',
+          -- },
           {
             icon = ' ',
             icon_hl = 'Error',
@@ -89,7 +89,7 @@ return {
           },
         },
         footer = {
-          'h4rl, 2024',
+          'h4rl, 2025',
         },
       },
       hide = {

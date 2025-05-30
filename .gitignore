@@ -3,7 +3,7 @@ test.sh
 .luarc.json
 nvim
 token.txt
-
+.direnv
 
 spell/
 lazy-lock.json
