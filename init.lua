@@ -154,7 +154,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup({
+require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -590,21 +590,21 @@ require('lazy').setup({
       local lspconfig = require 'lspconfig'
 
       lspconfig.lua_ls.setup {
-        autostart = false,
+        autostart = true,
         capabilities = capabilities,
       }
 
       lspconfig.ts_ls.setup {
-        autostart = false,
+        autostart = true,
         capabilities = capabilities,
       }
       lspconfig.clangd.setup {
-        autostart = false,
+        autostart = true,
         cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
         capabilities = capabilities,
       }
       lspconfig.svelte.setup {
-        autostart = false,
+        autostart = true,
         capabilities = capabilities,
       }
       lspconfig.unocss.setup {
@@ -613,18 +613,18 @@ require('lazy').setup({
         capabilities = capabilities,
       }
       lspconfig.tailwindcss.setup {
-        autostart = false,
+        autostart = true,
         filetypes = { 'html', 'svelte', 'scss', 'css' },
         capabilities = capabilities,
       }
       lspconfig.jdtls.setup {
-        autostart = false,
+        autostart = true,
         filetypes = { 'kotlin', 'java' },
         workspace = { checkThirdParty = false },
         capabilities = capabilities,
       }
       lspconfig.html.setup {
-        autostart = false,
+        autostart = true,
         capabilities = capabilities,
       }
       -- lspconfig.htmx.setup {
@@ -632,18 +632,24 @@ require('lazy').setup({
       --   capabilities = capabilities,
       -- }
       lspconfig.bashls.setup {
-        autostart = false,
+        autostart = true,
         capabilities = capabilities,
       }
       lspconfig.jsonls.setup {
-        autostart = false,
+        autostart = true,
         capabilities = capabilities,
       }
       lspconfig.vuels.setup {
-        autostart = false,
+        autostart = true,
         cmd = { 'vue-language-server', '--stdio' },
         capabilities = capabilities,
       }
+      lspconfig.qmlls.setup {
+        autostart = true,
+        cmd = { 'qmlls', '-E' },
+        capabilities = capabilities,
+      }
+
       -- require('mason-lspconfig').setup {
       --  handlers = {
       --    function(server_name)
@@ -701,9 +707,10 @@ require('lazy').setup({
         yaml = { 'yamlfix', 'yamlfmt' },
         c = { 'clang-format', 'uncrustify' },
         cpp = { 'clang-format', 'uncrustify' },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
         -- markdown = { 'cbfmt', 'mdformat' },
         bash = { { 'beautysh', 'shfmt' } },
-        javascript = { { 'prettierd', 'prettier' } },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
         nix = { 'alejandra' },
 
         -- Conform can also run multiple formatters sequentially
@@ -938,6 +945,6 @@ require('lazy').setup({
   --  For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()),
-  })
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

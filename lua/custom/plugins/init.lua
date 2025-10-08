@@ -37,12 +37,6 @@ return {
     version = '^4', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
-  { 'actionshrimp/direnv.nvim', opts = {
-    async = true,
-    on_direnv_finished = function()
-      vim.cmd 'LspStart'
-    end,
-  } },
   {
     'vhyrro/luarocks.nvim',
     priority = 1001, -- this plugin needs to run before anything else
@@ -56,6 +50,39 @@ return {
   {
     'wakatime/vim-wakatime',
     lazy = false,
+  },
+  {
+    'voltycodes/areyoulockedin.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    event = 'VeryLazy',
+    config = function()
+      local get_areyoulockedin_key = function()
+        local home = os.getenv 'HOME'
+        if home == nil then
+          vim.notify("Couldn't find home directory, this neovim config is for unix-like systems only", vim.log.levels.ERROR)
+          return ''
+        end
+
+        local readfile = io.open(home .. '/.secrets/.areyoulocked.in', 'r')
+        if readfile == nil then
+          vim.notify("Couldn't find areyoulockedin.in file", vim.log.levels.ERROR)
+          return ''
+        end
+
+        local areyoulockedin_key = readfile:read '*all'
+        if areyoulockedin_key == nil or areyoulockedin_key == '' then
+          vim.notify("Couldn't read areyoulockedin.in file, or file is empty", vim.log.levels.ERROR)
+          return ''
+        end
+
+        readfile:close()
+        return areyoulockedin_key
+      end
+
+      require('areyoulockedin').setup {
+        session_key = get_areyoulockedin_key(),
+      }
+    end,
   },
   {
     'norcalli/nvim-colorizer.lua',
@@ -84,6 +111,17 @@ return {
       vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
         desc = 'Search on current file',
       })
+    end,
+  },
+  {
+    'oribarilan/lensline.nvim',
+    branch = 'release/1.x', -- or: branch = 'release/1.x' for latest non-breaking updates
+    event = 'LspAttach',
+    config = function()
+      require('lensline').setup()
+
+      local lensline = require 'lensline'
+      lensline.enable()
     end,
   },
 }
