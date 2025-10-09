@@ -1,9 +1,4 @@
-tags
-test.sh
-.luarc.json
-nvim
-token.txt
 .direnv
+.update-mark
+nvim-pack-lock.json
 
-spell/
-lazy-lock.json
