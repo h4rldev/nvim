@@ -30,8 +30,13 @@ local function create_marker(marker_path)
 end
 
 --- Background checker function
-local function background_checker()
+function M.timer.background_checker()
   local marker_path = vim.fn.stdpath 'config' .. '/.update-mark'
+  local marker_stop_path = vim.fn.stdpath 'config' .. '/.no-update'
+
+  if vim.fn.filereadable(marker_stop_path) == 1 then
+    return
+  end
 
   if week_passed(marker_path) then
     create_marker(marker_path)
@@ -42,19 +47,32 @@ local function background_checker()
   end
 end
 
+function M.timer.resume_background_checks()
+  local marker_path = vim.fn.stdpath 'config' .. '/.stop-update'
+  if vim.fn.filereadable(marker_path) == 1 then
+    vim.fn.delete(marker_path)
+  end
+
+  M.timer.start_background_checks()
+end
+
 --- Start the background checker
 function M.timer.start_background_checks()
   -- Initial check
-  background_checker()
+  M.timer.background_checker()
 
   -- Schedule periodic checks every 30 minutes
   vim.loop.new_timer():start(
     1800000,
     0,
     vim.schedule_wrap(function()
-      background_checker()
+      M.timer.background_checker()
     end)
   )
+end
+
+function M.timer.stop_background_checks()
+  vim.loop.timer_stop(M.timer.timer)
 end
 
 return M

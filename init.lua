@@ -73,6 +73,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Show diagnostic [Q]uickfix list' })
 
+-- Save on Ctrl-s
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file' })
+
 --- Plugin management
 
 -- Add lynn.nvim; a plugin manager
@@ -80,7 +83,30 @@ vim.pack.add {
   { src = 'https://github.com/comfysage/lynn.nvim', name = 'lynn' },
 }
 
+vim.pack.add {
+  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', name = 'neo-tree' },
+}
+
 local utils = require 'utils'
 utils.timer.start_background_checks()
+
+vim.api.nvim_create_user_command('StopBackgroundUpdates', function()
+  utils.timer.stop_background_checks()
+  vim.notify 'Background updates stopped'
+end, {})
+
+vim.api.nvim_create_user_command('ResumeBackgroundUpdates', function()
+  utils.timer.resume_background_checks()
+  vim.notify 'Background updates resumed'
+end, {})
+
+vim.api.nvim_create_user_command('ForcePluginUpdate', function()
+  utils.timer.background_checker()
+  vim.notify 'Forcing plugin update check'
+end, {})
+
+vim.api.nvim_create_user_command('UpdatePlugins', function()
+  vim.pack.update()
+end, {})
 
 require('lynn').setup 'plugins'
