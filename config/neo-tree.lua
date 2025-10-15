@@ -65,7 +65,7 @@ neo_tree.setup {
         -- Status type
         untracked = '',
         ignored = '',
-        unstaged = '',
+        unstaged = '',
         staged = '',
         conflict = '',
       },

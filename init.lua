@@ -110,3 +110,4 @@ vim.api.nvim_create_user_command('UpdatePlugins', function()
 end, {})
 
 require('lynn').setup 'plugins'
+require('lsp').setup_lsp()
