@@ -37,12 +37,18 @@ require('blink.cmp').setup {
     -- By default, you may press `<c-space>` to show the documentation.
     -- Optionally, set `auto_show = true` to show the documentation after a delay.
     documentation = { auto_show = true, auto_show_delay_ms = 500 },
+    accept = { auto_brackets = { enabled = true } },
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'lazydev' },
+    default = { 'lsp', 'path', 'snippets', 'lazydev', 'supermaven' },
     providers = {
       lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+			supermaven = {
+          name = 'supermaven',
+          module = "blink-cmp-supermaven",
+          async = true
+        },
     },
   },
 

@@ -3,6 +3,9 @@ return {
   { url = 'nvim-lua/plenary.nvim' },
   { url = 'MunifTanjim/nui.nvim' },
   { url = 'folke/snacks.nvim' },
+  { url = 'nvim-telescope/telescope-ui-select.nvim' },
+  { url = 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  { url = 'nvim-telescope/telescope.nvim', name = 'telescope', event = 'VimEnter' },
 
   -- Icons
   { url = 'nvim-tree/nvim-web-devicons' },
@@ -18,8 +21,15 @@ return {
   -- Snippet engine
   { url = 'L3MON4D3/LuaSnip', version = 'v2.4.0', run = 'make install_jsregexp' },
 
+  -- Supermaven
+  { url = 'supermaven-inc/supermaven-nvim', name = 'supermaven' },
+  { url = 'Huijiro/blink-cmp-supermaven' },
+
   -- Completion
   { url = 'saghen/blink.cmp', name = 'blink-cmp', version = 'v1.7.0', run = 'cargo build --release' },
+
+  -- Treesitter
+  { url = 'nvim-treesitter/nvim-treesitter', name = 'treesitter' },
 
   -- Plugins
   { url = 'nanotee/zoxide.vim', name = 'zoxide' },
@@ -35,4 +45,7 @@ return {
   { url = 'oribarilan/lensline.nvim', name = 'lensline', version = 'release/2.x', event = 'LspAttach' },
   { url = 'NotAShelf/direnv.nvim', name = 'direnv' },
   { url = 'folke/trouble.nvim', name = 'trouble' },
+  { url = 'stevearc/conform.nvim', name = 'conform' },
+  { url = 'zbirenbaum/nvterm', name = 'nvterm' },
+  { url = 'windwp/nvim-autopairs', name = 'autopairs', event = 'InsertEnter' },
 }

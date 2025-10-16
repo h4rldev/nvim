@@ -41,7 +41,11 @@ vim.lsp.config('lua_ls', {
   end,
   settings = {
     capabilities = capabilities,
-    Lua = {},
+    Lua = {
+      completion = {
+        callSnippet = 'Replace',
+      },
+    },
   },
 })
 
